@@ -117,7 +117,7 @@ function AccordionItem({ title, content, isOpen, onClick, idPrefix, index }) {
         <motion.span
           initial={false}
           animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.25 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="text-[28px] select-none pointer-events-none"
         >
           +
@@ -131,9 +131,10 @@ function AccordionItem({ title, content, isOpen, onClick, idPrefix, index }) {
             role="region"
             aria-labelledby={buttonId}
             key="content"
-            initial={{ height: 0, opacity: 0, y: -6 }}
-            animate={{ height: "auto", opacity: 1, y: 0 }}
-            exit={{ height: 0, opacity: 0, y: -6 }}
+            layout
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
             className="overflow-hidden pb-4"
           >
